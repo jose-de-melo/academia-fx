@@ -8,6 +8,8 @@ import br.com.academia.utils.Unidades;
  * @author José do Carmo de Melo Silva
  */
 public class Ritmo implements Comparable<Ritmo>{
+	private long id;
+	private long idAtividade;
 	private double distancia;
 	private Hora tempo;
 	
@@ -19,7 +21,23 @@ public class Ritmo implements Comparable<Ritmo>{
 		this.distancia = distancia;
 		this.tempo = minutosGastos;
 	}
-	
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getIdAtividade() {
+		return idAtividade;
+	}
+
+	public void setIdAtividade(long idAtividade) {
+		this.idAtividade = idAtividade;
+	}
+
 	public Ritmo(String ritmo){
 		this();
 		String[] ritmoQuebrado = ritmo.split(" ");

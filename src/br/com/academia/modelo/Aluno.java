@@ -8,6 +8,19 @@ public class Aluno {
 	public Aluno() {
 	}
 
+	public Aluno(String nome, String cpf, String whattsapp, String sexo, String altura, String peso, String email, Data dataNascimento) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.whattsapp = whattsapp;
+		this.sexo = sexo;
+		this.altura = altura;
+		this.peso = peso;
+		this.email = email;
+		this.dataNascimento = dataNascimento;
+	}
+
+
+
 	public long getId() {
 		return id;
 	}
@@ -82,6 +95,6 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return String.format("Nome : %s\nData de Nascimento : %s\nCPF : %s\nWhattsApp : %s");
+		return String.format("%s (%s)", nome, email);
 	}
 }

@@ -1,11 +1,10 @@
 package br.com.academia.modelo;
 
-
-public class Atividade {
-	private int id;
-	private String tipoExercicio;
-	private Usuario usuario;
-	private Data dataExercicio;
+public class Atividade implements Comparable<Atividade>{
+	private long id;
+	private String tipoAtividade;
+	private Aluno aluno;
+	private Data dataAtividade;
 	private Tempo tempo;
 	private Hora duracao;
 	private double distancia;
@@ -14,36 +13,36 @@ public class Atividade {
 
 	public Atividade() { }
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getTipoExercicio() {
-		return tipoExercicio;
+	public String getTipoAtividade() {
+		return tipoAtividade;
 	}
 
-	public void setTipoExercicio(String tipoExercicio) {
-		this.tipoExercicio = tipoExercicio;
+	public void setTipoAtividade(String tipoAtividade) {
+		this.tipoAtividade = tipoAtividade;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Aluno getAluno() {
+		return aluno;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
 
 	public Data getData() {
-		return dataExercicio;
+		return dataAtividade;
 	}
 
 	public void setData(Data data) {
-		this.dataExercicio = data;
+		this.dataAtividade = data;
 	}
 
 	public Tempo getTempo() {
@@ -88,6 +87,17 @@ public class Atividade {
 
 	@Override
 	public String toString() {
-		return String.format(tipoExercicio + " -- " + dataExercicio.toString() + " -- " + tempo.toString());
+		return String.format(tipoAtividade + " -- " + dataAtividade.toString() + " -- " + tempo.toString());
+	}
+
+	@Override
+	public int compareTo(Atividade atividade) {
+		if(atividade.aluno.getEmail().compareTo(aluno.getEmail()) == 0 && 
+				atividade.getData().compareTo(dataAtividade) == 0 && 
+				atividade.getTempo().toString().compareTo(tempo.toString()) == 0)
+			return 0;
+		else{
+			return 1;
+		}
 	}
 }

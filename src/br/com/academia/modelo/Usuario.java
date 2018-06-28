@@ -1,11 +1,11 @@
 package br.com.academia.modelo;
 
 public class Usuario {
-		private int id;
+		private long id;
 		private String usuario, senha, papel;
 		private boolean logado;
 		
-		public Usuario(int id, String usuario, String senha, String papel, boolean logado) {
+		public Usuario(long id, String usuario, String senha, String papel, boolean logado) {
 			this.id = id;
 			this.usuario = usuario;
 			this.senha = senha;
@@ -13,10 +13,10 @@ public class Usuario {
 			this.logado = logado;
 		}
 		
-		public int getId() {
+		public long getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(long id) {
 			this.id = id;
 		}
 		public String getUsuario() {

@@ -1,26 +1,23 @@
 package br.com.academia.modelo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public final class AtividadeCompleta extends Atividade {
-	private int id_ativade_completa;
+	private long id_atividade_completa;
 	private double velocidadeMedia, velocidadeMaxima;
 	private Ritmo ritmoMedio, ritmoMaximo;
 	private double menorElevacao, maiorElevacao;
-	private ArrayList<Ritmo> ritmosNoExercicio;
+	private List<Ritmo> ritmosNoExercicio;
 	
 	public AtividadeCompleta() {
-		ritmoMaximo = new Ritmo();
-		ritmoMaximo = new Ritmo();
-		ritmosNoExercicio = new ArrayList<Ritmo>();
 	}
 
-	public int getId_ativade_completa() {
-		return id_ativade_completa;
+	public long getId_ativade_completa() {
+		return id_atividade_completa;
 	}
 
-	public void setId_ativade_completa(int id_ativade_completa) {
-		this.id_ativade_completa = id_ativade_completa;
+	public void setId_atividade_completa(long id_ativade_completa) {
+		this.id_atividade_completa = id_ativade_completa;
 	}
 
 	public double getVelocidadeMedia() {
@@ -71,11 +68,11 @@ public final class AtividadeCompleta extends Atividade {
 		this.maiorElevacao = maiorElevacao;
 	}
 	
-	public void setRitmosNoExercicio(ArrayList<Ritmo> ritmosNoExercicio) {
+	public void setRitmosNoExercicio(List<Ritmo> ritmosNoExercicio) {
 		this.ritmosNoExercicio = ritmosNoExercicio;
 	}
 
-	public ArrayList<Ritmo> getRitmosNoExercicio() {
+	public List<Ritmo> getRitmosNoExercicio() {
 		return ritmosNoExercicio;
 	}
 }

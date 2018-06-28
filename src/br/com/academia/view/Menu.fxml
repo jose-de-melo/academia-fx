@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="root" prefHeight="500.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.academia.controle.MenuController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menuArquivo" text="Arquivo">
+            <items>
+              <MenuItem mnemonicParsing="true" onAction="#importarDados" text="Importar Dados">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Aluno">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#gerenciarAlunos" text="Gerenciar Alunos" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Atividade">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#gerenciarAtividades" text="Gerenciar Atividades" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Relatórios">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Relatório de Estatísticas" />
+                  <MenuItem mnemonicParsing="false" text="Relatório em Gráfico" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Usuário">
+               <items>
+                  <MenuItem fx:id="mIUsuarios" mnemonicParsing="false" text="Gerenciar Usuários" />
+                  <MenuItem onAction="#logout" text="Logout">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

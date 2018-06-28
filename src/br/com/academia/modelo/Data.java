@@ -1,5 +1,6 @@
 package br.com.academia.modelo;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -67,7 +68,15 @@ public class Data implements Comparable<Data>{
 		}
 	}
 	
-	public static Data transformaDateEmData(Date date){
+	public java.sql.Date toDateSQL(){
+		return java.sql.Date.valueOf(ano + "-" + mes + "-" + dia);
+	}
+	
+	public static Data getValueOf(LocalDate date){
+		return new Data(date.getDayOfMonth(), date.getMonthValue(), date.getYear());
+	}
+	
+	public static Data getValueOf(Date date){
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		

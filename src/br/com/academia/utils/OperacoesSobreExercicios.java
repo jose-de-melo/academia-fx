@@ -12,8 +12,8 @@ public class OperacoesSobreExercicios {
 		List<Object> tipos = new ArrayList<Object>();
 
 		for (Atividade exercicio : exercicios) {
-			if(!tipos.contains(exercicio.getTipoExercicio())){
-				tipos.add(exercicio.getTipoExercicio());
+			if(!tipos.contains(exercicio.getTipoAtividade())){
+				tipos.add(exercicio.getTipoAtividade());
 			}
 		}
 		return tipos;
@@ -32,7 +32,7 @@ public class OperacoesSobreExercicios {
 		ArrayList<Atividade> exerciciosDoTipo = new ArrayList<Atividade>();
 
 		for (Atividade exer : exercicios) {
-			if(exer.getTipoExercicio().compareToIgnoreCase(tipoExercicio) == 0){
+			if(exer.getTipoAtividade().compareToIgnoreCase(tipoExercicio) == 0){
 				exerciciosDoTipo.add(exer);
 			}
 		}
