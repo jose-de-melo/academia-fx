@@ -39,8 +39,8 @@ public class AtividadeCompletaDAO {
 		}
 		
 		atividade.setId_atividade_completa(getIDUltimaAtividadeCompleta());
-		for (Ritmo ritmo : atividade.getRitmosNoExercicio()) {
-			ritmo.setIdAtividade(atividade.getId_ativade_completa());
+		for (Ritmo ritmo : atividade.getRitmosNaAtividade()) {
+			ritmo.setIdAtividade(atividade.getId());
 			auxDAO.cadastrar(ritmo);
 		}
 	}
@@ -84,12 +84,16 @@ public class AtividadeCompletaDAO {
 				atividade.setId(rs.getLong("id_atividade"));
 				atividade.setId_atividade_completa(rs.getLong("id_atividade_completa"));
 				atividade.setVelocidadeMaxima(rs.getDouble("velocidade_maxima"));
-				atividade.setVelocidadeMedia(rs.getDouble("velocidade_medio"));
-				atividade.setRitmoMedio(new Ritmo(rs.getString("ritmo_medio")));
-				atividade.setRitmoMaximo(new Ritmo(rs.getString("ritmo_maximo")));
+				atividade.setVelocidadeMedia(rs.getDouble("velocidade_media"));
+				Ritmo ritmoMedio = new Ritmo();
+				ritmoMedio.setRitmo(rs.getString("ritmo_medio"));
+				atividade.setRitmoMedio(ritmoMedio);
+				Ritmo ritmoMaximo = new Ritmo();
+				ritmoMaximo.setRitmo(rs.getString("ritmo_maximo"));
+				atividade.setRitmoMaximo(ritmoMaximo);
 				atividade.setMaiorElevacao(rs.getDouble("maior_elevacao"));
 				atividade.setMenorElevacao(rs.getDouble("menor_elevacao"));
-				atividade.setRitmosNoExercicio(auxDAO.listarPorIDAtividade(atividade.getId_ativade_completa()));
+				atividade.setRitmosNaAtividade(auxDAO.listarPorIDAtividade(atividade.getId()));
 			}
 			rs.close();
 			ps.close();
@@ -116,11 +120,5 @@ public class AtividadeCompletaDAO {
 			e.printStackTrace();
 		}
 		return 0;
-	}
-	
-	@Override
-	protected void finalize() throws Throwable {
-		conexao.close();
-		auxDAO.finalize();
 	}
 }

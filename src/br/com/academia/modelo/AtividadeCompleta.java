@@ -1,13 +1,13 @@
 package br.com.academia.modelo;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public final class AtividadeCompleta extends Atividade {
 	private long id_atividade_completa;
 	private double velocidadeMedia, velocidadeMaxima;
 	private Ritmo ritmoMedio, ritmoMaximo;
 	private double menorElevacao, maiorElevacao;
-	private List<Ritmo> ritmosNoExercicio;
+	private ArrayList<Ritmo> ritmosNaAtividade;
 	
 	public AtividadeCompleta() {
 	}
@@ -68,11 +68,11 @@ public final class AtividadeCompleta extends Atividade {
 		this.maiorElevacao = maiorElevacao;
 	}
 	
-	public void setRitmosNoExercicio(List<Ritmo> ritmosNoExercicio) {
-		this.ritmosNoExercicio = ritmosNoExercicio;
+	public void setRitmosNaAtividade(ArrayList<Ritmo> ritmosNaAtividade) {
+		this.ritmosNaAtividade = ritmosNaAtividade;
 	}
 
-	public List<Ritmo> getRitmosNoExercicio() {
-		return ritmosNoExercicio;
+	public ArrayList<Ritmo> getRitmosNaAtividade() {
+		return ritmosNaAtividade;
 	}
 }

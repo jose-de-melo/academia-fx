@@ -87,7 +87,7 @@ public class Atividade implements Comparable<Atividade>{
 
 	@Override
 	public String toString() {
-		return String.format(tipoAtividade + " -- " + dataAtividade.toString() + " -- " + tempo.toString());
+		return dataAtividade.toString() + " : " +  distancia + " : " + caloriasPerdidas + " : " + passosDados + "\n";
 	}
 
 	@Override
@@ -100,4 +100,13 @@ public class Atividade implements Comparable<Atividade>{
 			return 1;
 		}
 	}
+	
+	public String getDataTempo() {
+		return dataAtividade.toString() + "  ::  " + tempo.toString();
+	}
+	
+	public String getNomeAluno() {
+		return aluno.getNome();
+	}
+	
 }

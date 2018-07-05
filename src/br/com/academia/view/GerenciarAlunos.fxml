@@ -13,9 +13,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="411.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Label layoutX="25.0" layoutY="14.0" prefHeight="41.0" prefWidth="167.0" text="Controle de Alunos">
+                  <Label layoutX="25.0" layoutY="14.0" prefHeight="51.0" prefWidth="200" text="Controle de Alunos">
                      <font>
-                        <Font name="Avengeance Heroic Avenger Bold" size="24.0" />
+                        <Font name="Verdana" size="18.0" />
                      </font>
                   </Label>
                   <GridPane layoutX="47.0" layoutY="80.0" prefHeight="330.0" prefWidth="334.0">
@@ -117,7 +117,7 @@
                               </GridPane>
                               <Label layoutX="126.0" layoutY="2.0" text="Dados do Aluno ">
                                  <font>
-                                    <Font name="Avengeance Heroic Avenger Normal" size="16.0" />
+                                    <Font name="Verdana" size="18.0" />
                                  </font>
                               </Label>
                            </children></AnchorPane>

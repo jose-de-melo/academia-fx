@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="660.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.academia.controle.RelatorioGraficosController">
+   <children>
+      <BorderPane fx:id="borderPane" layoutX="47.0" layoutY="237.0" prefHeight="396.0" prefWidth="1108.0" />
+      <Group layoutX="-186.0" layoutY="62.0">
+         <children>
+            <DatePicker fx:id="dataInicio" layoutX="233.0" layoutY="53.0" />
+            <Label layoutX="442.0" layoutY="31.0" text="Data Final" />
+            <Label layoutX="233.0" layoutY="31.0" text="Data Inicial" />
+            <DatePicker fx:id="dataFinal" layoutX="442.0" layoutY="53.0" />
+         </children>
+      </Group>
+      <Group layoutX="-123.0" layoutY="59.0">
+         <children>
+            <ComboBox fx:id="comboAluno" layoutX="627.0" layoutY="53.0" prefHeight="25.0" prefWidth="330.0" />
+            <ComboBox fx:id="comboTipo" layoutX="977.0" layoutY="53.0" prefHeight="25.0" prefWidth="314.0" />
+            <Label layoutX="641.0" layoutY="37.0" text="Aluno" />
+            <Label layoutX="977.0" layoutY="37.0" text="Tipo De Dado " />
+         </children>
+      </Group>
+      <Button fx:id="btnGerar" layoutX="500.0" layoutY="171.0" mnemonicParsing="false" onAction="#actionGerar" prefHeight="25.0" prefWidth="108.0" text="Gerar Gráfico" />
+      <Label layoutX="506.0" layoutY="14.0" text="Relatório de Gráficos">
+         <font>
+            <Font name="Verdana Bold" size="20.0" />
+         </font></Label>
+      <Group layoutX="-51.0" layoutY="5.0">
+         <children>
+            <RadioButton fx:id="radioLinha" layoutX="633.0" layoutY="46.0" mnemonicParsing="false" text="Linhas" />
+            <RadioButton fx:id="radioBarra" layoutX="563.0" layoutY="46.0" mnemonicParsing="false" text="Barras" />
+            <RadioButton fx:id="radioGeral" layoutX="700.0" layoutY="46.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="54.0" text="Geral" />
+         </children>
+      </Group>
+      <Separator layoutX="7.0" layoutY="211.0" prefHeight="4.0" prefWidth="1200.0" />
+      <Button layoutX="640.0" layoutY="171.0" mnemonicParsing="false" onAction="#fechar" prefHeight="25.0" prefWidth="108.0" text="Fechar" />
+   </children>
+</AnchorPane>

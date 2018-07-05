@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="root" prefHeight="660.0" prefWidth="1220.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.com.academia.controle.RelatorioController">
+   <children>
+      <Label layoutX="461.0" layoutY="56.0" text="Relatório de Estatísticas">
+         <font>
+            <Font name="Verdana Bold" size="19.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="309.0" layoutY="182.0" prefHeight="383.0" prefWidth="613.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="298.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="44.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="313.0" minWidth="10.0" prefWidth="271.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="42.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="102.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Maior Duração" GridPane.rowIndex="1" />
+            <Label text="Maior Distância Percorrida (em Km)" GridPane.rowIndex="2" />
+            <Label text="Maior Número de Calorias Perdidas (em Kcal)" GridPane.rowIndex="3" />
+            <Label text="Maior Número de Passos Dados" GridPane.rowIndex="4" />
+            <Label text="Velocidade Máxima Alcançada (em Km/h)" GridPane.rowIndex="5" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="lbDuracao" prefHeight="17.0" prefWidth="333.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label fx:id="lbDistancia" prefHeight="17.0" prefWidth="333.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label fx:id="lbCalorias" prefHeight="17.0" prefWidth="333.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label fx:id="lbPassos" prefHeight="17.0" prefWidth="333.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Label fx:id="lbVelocidade" prefHeight="17.0" prefWidth="333.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Label text="Estatística">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="16.0" prefWidth="318.0" text="Valor : Data de Ocorrência" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Button layoutX="590.0" layoutY="612.0" mnemonicParsing="false" onAction="#fechar" text="Fechar" />
+      <ComboBox fx:id="boxAluno" layoutX="361.0" layoutY="124.0" onAction="#actionAluno" prefHeight="25.0" prefWidth="486.0" />
+   </children>
+</AnchorPane>

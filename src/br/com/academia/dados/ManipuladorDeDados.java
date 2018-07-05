@@ -97,12 +97,14 @@ public class ManipuladorDeDados {
 		return Integer.parseInt(quantidade);
 	}
 
-	public static List<Object> getTiposdeExercicios(List<Atividade> atividades){
+	/**
+	 * Retorna uma lista com todos os tipos de atividades que compõem a lista recebida como parâmetro
+	 */
+	public static List<Object> getTiposdeAtividades(List<Atividade> atividades){
 		List<Object> tipos = new ArrayList<Object>();
-
-		for (Atividade exercicio : atividades) {
-			if(!tipos.contains(exercicio.getTipoAtividade())){
-				tipos.add(exercicio.getTipoAtividade());
+		for (Atividade atividade : atividades) {
+			if(!tipos.contains(atividade.getTipoAtividade())){
+				tipos.add(atividade.getTipoAtividade());
 			}
 		}
 		return tipos;
@@ -117,11 +119,11 @@ public class ManipuladorDeDados {
 		return false;
 	}
 
-	public static ArrayList<Atividade> getAtividadesDoTipo(ArrayList<Atividade> atividades, String tipoExercicio) {
+	public static ArrayList<Atividade> getAtividadesDoTipo(List<Atividade> list, String tipoAtividade) {
 		ArrayList<Atividade> atividadesDoTipo = new ArrayList<Atividade>();
 
-		for (Atividade atv : atividades) {
-			if(atv.getTipoAtividade().compareToIgnoreCase(tipoExercicio) == 0){
+		for (Atividade atv : list) {
+			if(atv.getTipoAtividade().compareToIgnoreCase(tipoAtividade) == 0){
 				atividadesDoTipo.add(atv);
 			}
 		}
@@ -214,7 +216,7 @@ public class ManipuladorDeDados {
 							atividade.setRitmoMaximo(ritmoMaximoObj);
 							atividade.setMenorElevacao(menorElevacao);
 							atividade.setMaiorElevacao(maiorElevacao);
-							atividade.setRitmosNoExercicio(ritmos);
+							atividade.setRitmosNaAtividade(ritmos);
 
 							if(!dao.verificarSeAAtividadeJaFoiCadastrada(atividade) && !atividadeJaEstaNaListaRecebida(exercicios, atividade)){
 								atividadesDoArquivo.add(atividade);

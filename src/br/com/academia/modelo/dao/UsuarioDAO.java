@@ -17,7 +17,7 @@ public class UsuarioDAO {
 	}
 	
 	public void cadastrarUsuario(Usuario usuario){
-		String sql = "INSERT INTO usuario(usuario, senha, papel, logado)";
+		String sql = "INSERT INTO usuario(usuario, senha, papel, logado) VALUES (?, ?, ? , ?)";
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setString(1, usuario.getUsuario());
@@ -113,7 +113,7 @@ public class UsuarioDAO {
 	}
 	
 	public void remover(Usuario usuario){
-		String sql = "DELECT FROM usuario WHERE id = ?";
+		String sql = "DELETE FROM usuario WHERE id = ?";
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
 			ps.setLong(1, usuario.getId());
@@ -152,11 +152,4 @@ public class UsuarioDAO {
 		}
 		return false;
 	}
-	
-	
-	@Override
-	protected void finalize() throws Throwable {
-		conexao.close();
-	}
-	
 }

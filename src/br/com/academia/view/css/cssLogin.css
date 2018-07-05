@@ -1,6 +1,7 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .root{
+	-fx-base: darkblue;
 	-fx-background-color: linear-gradient( from 0.0% 0.0% to 50.0% 100.0%, rgb(255,255,255) 0.0, rgb(0,0,0) 80.0);
 }
 
@@ -40,6 +41,7 @@
 	-fx-background-radius : 5;
 	-fx-border-width: 2px;
 	-fx-border-color: white;
+	-fx-text-fill: white ;
 }
 
 .button:pressed{

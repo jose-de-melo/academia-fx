@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -17,6 +16,7 @@ import br.com.academia.dados.ManipuladorDeDados;
 import br.com.academia.modelo.Usuario;
 import br.com.academia.modelo.dao.UsuarioDAO;
 import br.com.academia.utils.Chooser;
+import br.com.academia.utils.Constantes;
 
 public class MenuController {
 	UsuarioDAO dao = new UsuarioDAO();
@@ -51,14 +51,40 @@ public class MenuController {
 		new Academia().start(new Stage());
 	}
 	
+	
+	@FXML
+	void telaGraficos() {
+		AnchorPane telaGraficos;
+		try {
+			telaGraficos = (AnchorPane) FXMLLoader.load(getClass().getResource("/br/com/academia/view/RelatorioGraficos.fxml"));
+			root.setCenter(telaGraficos);
+			((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA + " - Relatório de Gráficos");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@FXML
+	void telaRelatorioEstatisticas() {
+		AnchorPane telaGraficos;
+		try {
+			telaGraficos = (AnchorPane) FXMLLoader.load(getClass().getResource("/br/com/academia/view/Relatorio.fxml"));
+			root.setCenter(telaGraficos);
+			((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA + " - Relatório de Estatísticas");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	@FXML
 	void gerenciarAlunos(){
 		AnchorPane telaGerenciarAlunos;
 		try {
-			telaGerenciarAlunos = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/GerenciarAlunos.fxml"));
-			Scene scene = new Scene(telaGerenciarAlunos,801,562);
-			scene.getStylesheets().add(getClass().getResource("../view/css/application.css").toExternalForm());
+			telaGerenciarAlunos = (AnchorPane)FXMLLoader.load(getClass().getResource("/br/com/academia/view/GerenciarAlunos.fxml"));
 			root.setCenter(telaGerenciarAlunos);
+			((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA + " - Controle de Alunos");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -68,9 +94,21 @@ public class MenuController {
 	void gerenciarAtividades(){
 		AnchorPane telaGerenciarAtividades;
 		try {
-			telaGerenciarAtividades = (AnchorPane)FXMLLoader.load(getClass().getResource("../view/GerenciarAtividades.fxml"));
-			Scene scene = new Scene(telaGerenciarAtividades,801,562);
-			scene.getStylesheets().add(getClass().getResource("../view/css/application.css").toExternalForm());
+			telaGerenciarAtividades = (AnchorPane)FXMLLoader.load(getClass().getResource("/br/com/academia/view/GerenciarAtividades.fxml"));
+			((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA + " - Controle de Atividades");
+			root.setCenter(telaGerenciarAtividades);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@FXML
+	void gerenciarUsuarios() {
+		AnchorPane telaGerenciarAtividades;
+		try {
+			telaGerenciarAtividades = (AnchorPane)FXMLLoader.load(getClass().getResource("/br/com/academia/view/GerenciarUsuarios.fxml"));
+			((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA + " - Controle de Usuários");
 			root.setCenter(telaGerenciarAtividades);
 		} catch (IOException e) {
 			e.printStackTrace();

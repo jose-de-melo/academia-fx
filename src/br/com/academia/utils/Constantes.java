@@ -10,7 +10,7 @@ public class Constantes {
 	/**
 	 * Define o nome da aplicação.
 	 */
-	public static final String NOME_PROGRAMA = "Academia F.X";
+	public static final String NOME_PROGRAMA = "Academia F.X.";
 	
 	/**
 	 * Representa o nome de um tipo de gráfico

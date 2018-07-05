@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="709.0" prefWidth="633.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <GridPane layoutX="95.0" layoutY="64.0" prefHeight="412.0" prefWidth="445.0">
+         <children>
+            <Label text="Data" GridPane.rowIndex="1" />
+            <Label text="Tempo (HH:MM - HH:MM)" GridPane.rowIndex="2" />
+            <Label text="Tipo da Atividade" GridPane.rowIndex="3" />
+            <Label text="Duração (HH:MM:SS)" GridPane.rowIndex="4" />
+            <Label text="Distância (em Km)" GridPane.rowIndex="5" />
+            <Label text="Calorias Perdidas" GridPane.rowIndex="6" />
+            <Label text="Passos" GridPane.rowIndex="7" />
+            <Label text="Velocidade Média (Km/h)" GridPane.rowIndex="8" />
+            <Label text="Velocidade Máxima (Km/h)" GridPane.rowIndex="9" />
+            <Label text="Ritmo Médio (/Km)" GridPane.rowIndex="10" />
+            <Label text="Ritmo Máximo (/Km)" GridPane.rowIndex="11" />
+            <Label text="Menor Elevação (em metros)" GridPane.rowIndex="12" />
+            <Label text="Maior Elevação (em metros)" GridPane.rowIndex="13" />
+            <Label fx:id="lbAluno" prefHeight="17.0" prefWidth="259.0" GridPane.columnIndex="2" />
+            <Label fx:id="lbData" prefHeight="17.0" prefWidth="259.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="lbTempo" prefHeight="17.0" prefWidth="259.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="lbTipo" prefHeight="17.0" prefWidth="259.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label fx:id="lbDuracao" prefHeight="17.0" prefWidth="300.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="lbDistancia" prefHeight="17.0" prefWidth="258.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="lbCalorias" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="lbPassos" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="lbVelME" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label fx:id="lbVelMA" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label fx:id="lbRitmoME" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label fx:id="lbRitmoMA" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Label fx:id="lbMEElevacao" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Label fx:id="lbMAElevacao" prefHeight="17.0" prefWidth="260.0" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text=":" GridPane.columnIndex="1" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Aluno" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="188.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="69.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="252.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <TableView fx:id="tableRitmos" layoutX="46.0" layoutY="520.0" prefHeight="119.0" prefWidth="543.0">
+        <columns>
+          <TableColumn fx:id="colKm" prefWidth="75.0" text="Quilometragem" />
+          <TableColumn fx:id="colTempo" prefWidth="75.0" text="Tempo" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="265.0" layoutY="494.0" text="Ritmos na Atividade" />
+      <Label layoutX="187.0" layoutY="14.0" text="Dados da Atividade">
+         <font>
+            <Font name="Verdana Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

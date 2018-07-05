@@ -27,13 +27,10 @@ public class AtividadeDAO {
 	public void cadastrar(Atividade  atividade){
 		Aluno aluno = alunoDAO.buscarPorEmail(atividade.getAluno().getEmail());
 
-		System.out.println(aluno);
-		
 		if(aluno == null){
 			alunoDAO.cadastrar(atividade.getAluno());
 			aluno =  alunoDAO.buscarPorEmail(atividade.getAluno().getEmail());
 		}
-		System.out.println(aluno);
 		atividade.setAluno(aluno);
 
 		String sql = "INSERT INTO atividade(id_aluno, data, tempo, tipo, duracao, distancia, calorias, passos)  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -64,7 +61,7 @@ public class AtividadeDAO {
 	}
 
 	public void alterar(Atividade atividade){
-		String sql = "UPDATE atividade  SET tipo=?, duracao=?, distancia=?,  calorias=?, passos=? WHERE  id = ?";
+		String sql = "UPDATE atividade SET tipo=?, duracao=?, distancia=?,  calorias=?, passos=?, data = ?, tempo = ?, id_aluno = ? WHERE  id = ?";
 
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
@@ -73,9 +70,10 @@ public class AtividadeDAO {
 			ps.setDouble(3, atividade.getDistancia());
 			ps.setDouble(4, atividade.getCaloriasPerdidas());
 			ps.setInt(5, atividade.getPassosDados());
-			ps.setLong(6, atividade.getAluno().getId());
-			ps.setString(7, atividade.getData().toString());
-			ps.setString(8, atividade.getTempo().toString());
+			ps.setString(6, atividade.getData().toString());
+			ps.setString(7, atividade.getTempo().toString());
+			ps.setLong(8, atividade.getAluno().getId());
+			ps.setLong(9, atividade.getId());
 
 			ps.execute();
 			ps.close();
@@ -168,7 +166,7 @@ public class AtividadeDAO {
 					if(id == idCliente){
 						atividade = new Atividade();
 
-						atividade.setAluno(new AlunoDAO().buscarPorID(id ));
+						atividade.setAluno(new AlunoDAO().buscarPorID(id));
 						atividade.setId(rs.getLong("id"));
 						atividade.setData(data);
 						atividade.setTempo(new Tempo(rs.getString("tempo")));
@@ -184,6 +182,123 @@ public class AtividadeDAO {
 						}else{
 							atividades.add(atividade);
 						}
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return atividades;
+	}
+
+
+	public List<Atividade> atividadesDoAluno(long idCliente){
+		ArrayList<Atividade> atividades = new ArrayList<Atividade>();
+		String sql = "SELECT * FROM atividade";
+		Atividade atividade = null;
+
+		try {
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				long id = rs.getLong("id_aluno");
+				if(id == idCliente){
+					atividade = new Atividade();
+
+					atividade.setAluno(new AlunoDAO().buscarPorID(id));
+					atividade.setId(rs.getLong("id"));
+					atividade.setData(new Data(rs.getString("data")));
+					atividade.setTempo(new Tempo(rs.getString("tempo")));
+					atividade.setTipoAtividade(rs.getString("tipo"));
+					atividade.setDuracao(new Hora(rs.getString("duracao")));
+					atividade.setDistancia(rs.getDouble("distancia"));
+					atividade.setCaloriasPerdidas(rs.getDouble("calorias"));
+					atividade.setPassosDados(rs.getInt("passos"));
+
+					AtividadeCompleta dadosComplementares = atividadeCompletaDAO.buscarPorIDAtividade(atividade.getId());
+					if(dadosComplementares != null){
+						atividades.add(getAtividadeCompleta(atividade, dadosComplementares));
+					}else{
+						atividades.add(atividade);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return atividades;
+	}
+
+	public List<Atividade> atividadesNoPeriodo(Data dtInicial, Data dtFinal){
+		ArrayList<Atividade> atividades = new ArrayList<Atividade>();
+		String sql = "SELECT * FROM atividade";
+		Atividade atividade = null;
+
+		try {
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				Data data = new Data(rs.getString("data"));
+				if(data.dataDentroDoPeriodo(dtInicial, dtFinal)){
+					long id = rs.getLong("id_aluno");
+					atividade = new Atividade();
+
+					atividade.setAluno(new AlunoDAO().buscarPorID(id ));
+					atividade.setId(rs.getLong("id"));
+					atividade.setData(data);
+					atividade.setTempo(new Tempo(rs.getString("tempo")));
+					atividade.setTipoAtividade(rs.getString("tipo"));
+					atividade.setDuracao(new Hora(rs.getString("duracao")));
+					atividade.setDistancia(rs.getDouble("distancia"));
+					atividade.setCaloriasPerdidas(rs.getDouble("calorias"));
+					atividade.setPassosDados(rs.getInt("passos"));
+
+					AtividadeCompleta dadosComplementares = atividadeCompletaDAO.buscarPorIDAtividade(atividade.getId());
+					if(dadosComplementares != null){
+						atividades.add(getAtividadeCompleta(atividade, dadosComplementares));
+					}else{
+						atividades.add(atividade);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return atividades;
+	}
+
+
+	public List<Atividade> atividadesDoTipoNoPeriodo(Data dtInicial, Data dtFinal, String tipo){
+		ArrayList<Atividade> atividades = new ArrayList<Atividade>();
+		String sql = "SELECT * FROM atividade WHERE tipo ilike ?";
+		Atividade atividade = null;
+
+		try {
+			PreparedStatement ps = conexao.prepareStatement(sql);
+			ps.setString(1, tipo);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				Data data = new Data(rs.getString("data"));
+				if(data.dataDentroDoPeriodo(dtInicial, dtFinal)){
+					atividade = new Atividade();
+					atividade.setAluno(new AlunoDAO().buscarPorID(rs.getLong("id_aluno")));
+					atividade.setId(rs.getLong("id"));
+					atividade.setData(data);
+					atividade.setTempo(new Tempo(rs.getString("tempo")));
+					atividade.setTipoAtividade(rs.getString("tipo"));
+					atividade.setDuracao(new Hora(rs.getString("duracao")));
+					atividade.setDistancia(rs.getDouble("distancia"));
+					atividade.setCaloriasPerdidas(rs.getDouble("calorias"));
+					atividade.setPassosDados(rs.getInt("passos"));
+
+					AtividadeCompleta dadosComplementares = atividadeCompletaDAO.buscarPorIDAtividade(atividade.getId());
+					if(dadosComplementares != null){
+						atividades.add(getAtividadeCompleta(atividade, dadosComplementares));
+					}else{
+						atividades.add(atividade);
 					}
 				}
 			}
@@ -240,12 +355,5 @@ public class AtividadeDAO {
 		}else{
 			return true;
 		}
-	}
-
-
-	@Override
-	protected void finalize() throws Throwable {
-		conexao.close();
-		atividadeCompletaDAO.finalize();
 	}
 }

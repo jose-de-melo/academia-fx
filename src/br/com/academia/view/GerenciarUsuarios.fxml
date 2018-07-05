@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="694.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.academia.controle.GerenciarUsuariosController">
+   <children>
+      <TableView fx:id="table" layoutY="374.0" onMouseClicked="#actionTable" prefHeight="321.0" prefWidth="1220.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="374.0">
+        <columns>
+          <TableColumn fx:id="colUser" editable="false" prefWidth="259.0" text="Usuario" />
+          <TableColumn fx:id="colSenha" editable="false" prefWidth="462.0" text="Senha" />
+            <TableColumn fx:id="colPapel" editable="false" prefWidth="147.0" text="Papel" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="505.0" layoutY="14.0" text="Controle de Usuarios">
+         <font>
+            <Font name="Verdana Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="439.0" layoutY="124.0" text="Usuário" />
+      <Label layoutX="439.0" layoutY="170.0" text="Senha" />
+      <Label layoutX="439.0" layoutY="210.0" text="Papel" />
+      <TextField fx:id="tfUser" layoutX="527.0" layoutY="120.0" onMouseClicked="#limparMensagem" />
+      <TextField fx:id="tfSenha" layoutX="527.0" layoutY="166.0" onMouseClicked="#limparMensagem" />
+      <Button fx:id="cdAlterar" layoutX="753.0" layoutY="120.0" mnemonicParsing="false" onAction="#cadastrarAlterar" text="Cadastrar" />
+      <Button layoutX="754.0" layoutY="166.0" mnemonicParsing="false" onAction="#fechar" prefHeight="25.0" prefWidth="67.0" text="Fechar" />
+      <Button fx:id="btnExcluir" disable="true" layoutX="755.0" layoutY="260.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="67.0" text="Excluir" />
+      <RadioButton fx:id="rbAdm" layoutX="527.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#limparMensagem" text="Administrador">
+         <toggleGroup>
+            <ToggleGroup fx:id="rbGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbComum" layoutX="650.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#limparMensagem" text="Comum" toggleGroup="$rbGroup" />
+      <Button fx:id="btnCancelar" disable="true" layoutX="754.0" layoutY="215.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="67.0" text="Cancelar" />
+      <Label fx:id="mensagens" layoutX="440.0" layoutY="252.0" prefHeight="42.0" prefWidth="276.0" wrapText="true" />
+   </children>
+</AnchorPane>

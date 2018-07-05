@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="398.0" prefWidth="581.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane fx:id="root" prefHeight="398.0" prefWidth="581.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane dividerPositions="0.6060606060606061" layoutX="131.0" layoutY="64.0" orientation="VERTICAL" prefHeight="398.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -32,23 +31,24 @@
                         <Label text="Quilometragem" />
                         <Label text="Minutos Gastos" GridPane.rowIndex="1" />
                         <Label text="Segundos Gastos" GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="tfQuilometragem" onMouseClicked="#limparMensagem" GridPane.columnIndex="1" />
+                        <TextField fx:id="tfMinutos" onMouseClicked="#limparMensagem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tfSegundos" onMouseClicked="#limparMensagem" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <Button layoutX="397.0" layoutY="88.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="397.0" layoutY="47.0" mnemonicParsing="false" text="Button" />
-                  <Button layoutX="397.0" layoutY="128.0" mnemonicParsing="false" text="Button" />
+                  <Button fx:id="btnAlterar" disable="true" layoutX="397.0" layoutY="88.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="67.0" text="Alterar" />
+                  <Button fx:id="btnCadastrar" layoutX="397.0" layoutY="47.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
+                  <Button fx:id="btnExcluir" disable="true" layoutX="397.0" layoutY="128.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="67.0" text="Excluir" />
+                  <Button fx:id="btnConcluir" layoutX="235.0" layoutY="198.0" mnemonicParsing="false" onAction="#concluirCadastro" text="Concluir Cadastro" />
+                  <Label fx:id="mensagem" layoutX="150.0" layoutY="162.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView layoutX="104.0" layoutY="-30.0" prefHeight="153.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="table" layoutX="104.0" layoutY="-30.0" onMouseClicked="#tableAction" prefHeight="153.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Quilometragem" />
-                      <TableColumn prefWidth="75.0" text="Minutos Gastos" />
-                        <TableColumn prefWidth="75.0" text="Segundos Gastos" />
+                      <TableColumn fx:id="colQuilometragem" prefWidth="75.0" text="Quilometragem" />
+                      <TableColumn fx:id="colMinutosGastos" prefWidth="75.0" text="Tempo Gasto" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

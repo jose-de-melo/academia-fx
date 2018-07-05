@@ -17,25 +17,31 @@ public class AlunoDAO {
 		this.conexao = ConnectionFactory.getConnection();
 	}
 	
-	public void cadastrar(Aluno aluno){
-		String sql = "INSERT INTO aluno(nome, sexo, altura, peso, datanascimento, email, cpf, whattsapp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		try {
-			PreparedStatement st = conexao.prepareStatement(sql);
-			
-			st.setString(1, aluno.getNome());
-			st.setString(2, aluno.getSexo());
-			st.setString(3, aluno.getAltura());
-			st.setString(4, aluno.getPeso());
-			st.setString(5, aluno.getDataNascimento().toString());
-			st.setString(6, aluno.getEmail());
-			st.setString(7, aluno.getCpf());
-			st.setString(8, aluno.getWhattsapp());
-			
-			st.execute();
-			st.close();
-		} catch (SQLException e) {
-			System.err.println("Erro ao cadastrar um aluno!");
-			e.printStackTrace();
+	public boolean cadastrar(Aluno aluno){
+		if(buscarPorEmail(aluno.getEmail()) == null){
+			String sql = "INSERT INTO aluno(nome, sexo, altura, peso, datanascimento, email, cpf, whattsapp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+			try {
+				PreparedStatement st = conexao.prepareStatement(sql);
+				
+				st.setString(1, aluno.getNome());
+				st.setString(2, aluno.getSexo());
+				st.setString(3, aluno.getAltura());
+				st.setString(4, aluno.getPeso());
+				st.setString(5, aluno.getDataNascimento().toString());
+				st.setString(6, aluno.getEmail());
+				st.setString(7, aluno.getCpf());
+				st.setString(8, aluno.getWhattsapp());
+				
+				st.execute();
+				st.close();
+			} catch (SQLException e) {
+				System.err.println("Erro ao cadastrar um aluno!");
+				e.printStackTrace();
+			}
+			return true;
+		}else{
+			return false;
 		}
 	}
 	
@@ -266,10 +272,5 @@ public class AlunoDAO {
 		}else{
 			return true;
 		}
-	}
-
-	@Override
-	protected void finalize() throws Throwable {
-		conexao.close();
 	}
 }

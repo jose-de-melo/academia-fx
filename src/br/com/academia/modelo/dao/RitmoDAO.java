@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.academia.modelo.Ritmo;
 import br.com.academia.sgbd.ConnectionFactory;
@@ -22,7 +21,7 @@ public class RitmoDAO {
 		
 		try {
 			PreparedStatement ps = conexao.prepareStatement(sql);
-			ps.setLong(1,ritmo.getIdAtividade() );
+			ps.setLong(1,ritmo.getIdAtividade());
 			ps.setDouble(2, ritmo.getDistancia());
 			ps.setString(3, ritmo.getTempoRitmo());
 			
@@ -51,7 +50,7 @@ public class RitmoDAO {
 		}
 	}
 	
-	public List<Ritmo> listarPorIDAtividade(long idAtividade){
+	public ArrayList<Ritmo> listarPorIDAtividade(long idAtividade){
 		ArrayList<Ritmo> ritmos = new ArrayList<Ritmo>();
 		String sql = "SELECT * FROM ritmo where id_atividade = ?";
 		
@@ -76,8 +75,4 @@ public class RitmoDAO {
 		return ritmos;
 	}
 	
-	@Override
-	protected void finalize() throws Throwable {
-		conexao.close();
-	}
 }

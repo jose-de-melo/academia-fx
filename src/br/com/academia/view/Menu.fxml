@@ -10,7 +10,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu fx:id="menuArquivo" text="Arquivo">
+          <Menu text="Arquivo">
             <items>
               <MenuItem mnemonicParsing="true" onAction="#importarDados" text="Importar Dados">
                      <accelerator>
@@ -33,13 +33,13 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Relatórios">
               <items>
-                <MenuItem mnemonicParsing="false" text="Relatório de Estatísticas" />
-                  <MenuItem mnemonicParsing="false" text="Relatório em Gráfico" />
+                <MenuItem mnemonicParsing="false" onAction="#telaRelatorioEstatisticas" text="Relatório de Estatísticas" />
+                  <MenuItem mnemonicParsing="false" onAction="#telaGraficos" text="Relatório em Gráfico" />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Usuário">
                <items>
-                  <MenuItem fx:id="mIUsuarios" mnemonicParsing="false" text="Gerenciar Usuários" />
+                  <MenuItem fx:id="mIUsuarios" mnemonicParsing="false" onAction="#gerenciarUsuarios" text="Gerenciar Usuários" />
                   <MenuItem onAction="#logout" text="Logout">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />

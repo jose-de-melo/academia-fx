@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 import br.com.academia.modelo.Aluno;
 import br.com.academia.modelo.Data;
 import br.com.academia.modelo.dao.AlunoDAO;
@@ -50,10 +51,10 @@ public class GerenciarAlunosController {
 		clNome.setStyle("-fx-alingment : CENTER;");
 		clNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		clEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-		
+
 		Masks.mascaraNumero(altura);
 		Masks.mascaraNumero(peso);
-		
+
 		alunos = FXCollections.observableList(dao.listar());
 		pagination = new Pagination((alunos.size() / linhasPorPagina()+ 1), 0);
 		atualizarPaginacao(dao.listar());
@@ -70,7 +71,7 @@ public class GerenciarAlunosController {
 
 		alunos = FXCollections.observableList(alunosList);
 		pagination.setPageFactory(this::createPage);
-		pagination.setPrefSize(354, 167);
+		pagination.setPrefSize(540, 162.1);
 	}
 
 	private Aluno getAlunoSelecionado(){
@@ -81,7 +82,6 @@ public class GerenciarAlunosController {
 		int fromIndex = pageIndex * linhasPorPagina();
 		int toIndex = Math.min(fromIndex +  linhasPorPagina(), alunos.size());
 		table.setItems(FXCollections.observableArrayList(alunos.subList(fromIndex, toIndex)));
-
 		return new BorderPane(table);
 	}
 
@@ -93,6 +93,7 @@ public class GerenciarAlunosController {
 	void getItemTable(MouseEvent event){
 		excluir.setDisable(false);
 		alterar.setDisable(false);
+		cadastrarAlterar.setText("Cadastrar");
 		alunoSelecionado = getAlunoSelecionado();
 		setarDadosAluno(alunoSelecionado);
 		limparMensagem();
@@ -113,8 +114,10 @@ public class GerenciarAlunosController {
 			setarValoresAluno(alunoSelecionado);
 			cadastrarAlterar.setText("Alterar");
 			cancelarAlteracao.setDisable(false);
+			alterar.setDisable(true);
+			excluir.setDisable(true);
 		}else{
-			Mensagens.msgErro(Constantes.NOME_PROGRAMA, "Erro", "Selecione um usuário a ser alterado!");
+			Mensagens.msgErro(Constantes.NOME_PROGRAMA + " : Gerenciar Alunos", "Erro", "Selecione um aluno a ser alterado!");
 		}
 	}
 
@@ -128,16 +131,18 @@ public class GerenciarAlunosController {
 		email.setText(aluno.getEmail());
 		sexo.setText(aluno.getSexo());
 	}
-	
+
 	private void setarDadosAluno(Aluno aluno){
-		lbNome.setText(aluno.getNome());
-		lbAltura.setText(aluno.getAltura());
-		lbPeso.setText(aluno.getPeso());
-		lbData.setText(aluno.getDataNascimento().toString());
-		lbWpp.setText(aluno.getWhattsapp());
-		lbCPF.setText(aluno.getCpf());
-		lbEmail.setText(aluno.getEmail());
-		lbSexo.setText(aluno.getSexo());
+		if(aluno != null) {
+			lbNome.setText(aluno.getNome());
+			lbAltura.setText(aluno.getAltura());
+			lbPeso.setText(aluno.getPeso());
+			lbData.setText(aluno.getDataNascimento().toString());
+			lbWpp.setText(aluno.getWhattsapp());
+			lbCPF.setText(aluno.getCpf());
+			lbEmail.setText(aluno.getEmail());
+			lbSexo.setText(aluno.getSexo());
+		}
 	}
 
 	@FXML
@@ -178,14 +183,19 @@ public class GerenciarAlunosController {
 				aluno.setEmail(email.getText());
 				aluno.setWhattsapp(wpp.getText());
 				aluno.setSexo(sexo.getText());
-				dao.cadastrar(aluno);
-				mensagens.setTextFill(Paint.valueOf("GREEN"));
-				mensagens.setText("Aluno cadastrado com sucesso!");
+				if(dao.cadastrar(aluno)){
+					mensagens.setTextFill(Paint.valueOf("GREEN"));
+					mensagens.setText("Aluno cadastrado com sucesso!");
+					atualizarPaginacao(dao.listar());
+				}else{
+					mensagens.setTextFill(Paint.valueOf("RED"));
+					mensagens.setText("Email já cadastrado!");
+				}
+			
 				limparCampos();
 				limparLabels();
 				excluir.setDisable(false);
 				alterar.setDisable(false);
-				atualizarPaginacao(dao.listar());
 			}
 		}
 	}
@@ -193,7 +203,7 @@ public class GerenciarAlunosController {
 	@FXML
 	void excluir(){
 		if(alunoSelecionado != null){
-			if(Mensagens.msgConfirma(Constantes.NOME_PROGRAMA, "Confirmar", "Deseja excluir o aluno selecionado ?")){
+			if(Mensagens.msgConfirma(Constantes.NOME_PROGRAMA + " : Gerenciar Alunos", "Confirmar", "Deseja excluir o aluno selecionado ?")){
 				dao.remover(alunoSelecionado);
 				excluir.setDisable(false);
 				alterar.setDisable(false);
@@ -202,15 +212,16 @@ public class GerenciarAlunosController {
 				limparLabels();
 			}
 		}else{
-			Mensagens.msgInfo(Constantes.NOME_PROGRAMA, "Erro", "Escolha um usuário primeiro!");
+			Mensagens.msgErro(Constantes.NOME_PROGRAMA + " : Gerenciar Alunos", "Erro", "Escolha um aluno primeiro!");
 		}
 	}
 
 	@FXML
 	void sair(){
-		root.setVisible(false);
+		((Stage) root.getScene().getWindow()).setTitle(Constantes.NOME_PROGRAMA);
+		((BorderPane) root.getScene().getRoot()).setCenter(null);
 	}
-	
+
 	@FXML
 	void onKeyPressed(){
 		limparLabels();
@@ -244,15 +255,15 @@ public class GerenciarAlunosController {
 
 	private void limparCampos(){
 		nome.setText("");
-		cpf.setText("");
+		cpf.clear();
 		sexo.setText("");
-		wpp.setText("");
+		wpp.clear();
 		altura.setText("");
 		peso.setText("");
 		email.setText("");
 		data.setValue(null);
 	}
-	
+
 	private void limparLabels(){
 		lbNome.setText("");
 		lbCPF.setText("");
